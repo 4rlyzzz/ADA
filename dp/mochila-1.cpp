@@ -39,12 +39,19 @@ void pd (std::vector<int>& peso, std::vector<int>& benef, int capacidad) {
 }
 
 int main() {
-    //std::vector<int>  peso = {3, 7, 4, 2, 1, 6};
-    //std::vector<int> benef = {12, 3, 7, 4, 3, 8};
-    std::vector<int> peso = {2, 3, 4};
-    std::vector<int> benef = {1, 2, 5};
+    /* 
+    std::vector<int>  pesos = {3, 7, 4, 2, 1, 6};
+    std::vector<int> beneficios = {12, 3, 7, 4, 3, 8};
     //int capacidad = 15;
+    
+    std::vector<int> pesos = {2, 3, 4};
+    std::vector<int> beneficios = {1, 2, 5};
     int capacidad = 6;
+    
+    */
+    std::vector<int> pesos = {1,11,21,23,33};
+    std::vector<int> beneficios = {11,21,31,33,43};
+    int capacidad = 61;
 
-    pd(peso, benef, capacidad);
+    pd(pesos, beneficios, capacidad);
 }
