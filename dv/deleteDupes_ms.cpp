@@ -7,7 +7,7 @@ void mergesort (std::vector<int>& ar, int left, int mid, int right) {
 
     std::vector<int> l(n1), r(n2);
 
-    for (int i = 0; i < n1; i++)
+    for (int i = 0; i < n1; i++) 
         l[i] = ar[left + i];
     for (int j = 0; j < n2; j++)
         r[j] = ar[mid + j + 1];

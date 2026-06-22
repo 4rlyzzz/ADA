@@ -7,6 +7,7 @@ void binaria(int idx, std::vector<int> &pesos, std::vector<int> &benef, int capa
 
     if(capTemp > capacidad)
         return;
+        
     if(idx >= pesos.size()) {
         if(currentBen > benMax){
             benMax = currentBen;
@@ -26,16 +27,18 @@ void combinatoria(int idx, std::vector<int> &pesos, std::vector<int> &benef, int
                   int capTemp, int &benMax, int currentBen) {
     if(capTemp > capacidad)
         return;
-    else {
+
+    if(idx >= pesos.size()) {
         if(currentBen > benMax){
             benMax = currentBen;
             res = temp;
         }
+        return;
     }
 
     for (int i = idx; i < pesos.size(); i++){
-        temp.push_back(idx);
-        combinatoria(i + 1, pesos, benef, capacidad, res, temp, capTemp + pesos[idx], benMax, currentBen + benef[idx]);
+        temp.push_back(i);
+        combinatoria(i + 1, pesos, benef, capacidad, res, temp, capTemp + pesos[i], benMax, currentBen + benef[i]);
         temp.pop_back();
     }
 }

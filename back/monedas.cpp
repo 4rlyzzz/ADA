@@ -2,11 +2,14 @@
 #include <vector>
 
 void permutacional (int idx, std::vector<int>& mon, int vuelto, std::vector<int>& res, std::vector<int>& temp, int sumCurrent) {
-    if(sumCurrent > vuelto)
+    if(sumCurrent > vuelto) {
         return;
-    if(sumCurrent == vuelto){
-        if (res.empty() || temp.size() < res.size())
+    } 
+    if(sumCurrent == vuelto) {
+        if(res.empty() || (int) temp.size() < (int) res.size()) {
             res = temp;
+        }
+        return;
     }
 
     for (int i = 0; i < mon.size(); i++) {
@@ -17,11 +20,11 @@ void permutacional (int idx, std::vector<int>& mon, int vuelto, std::vector<int>
 }
 
 void n_arios (int idx, std::vector<int>& mon, int vuelto, std::vector<int>& res, std::vector<int>& temp, int sumCurrent) {
-    if(sumCurrent > vuelto)
+    if(sumCurrent > vuelto) {
         return;
-    if (idx >= mon.size()) {
-        if (sumCurrent == vuelto) {
-            if (res.empty() || temp.size() < res.size()) 
+    }
+    if(sumCurrent == vuelto) {
+        if(res.empty() || (int) temp.size() < (int) res.size()) {
             res = temp;
         }
         return;
@@ -35,7 +38,7 @@ void n_arios (int idx, std::vector<int>& mon, int vuelto, std::vector<int>& res,
 
 int main() {
     std::vector<int> monedas = { 1, 2, 5 };
-    int vuelto = 9;
+    int vuelto = 5;
     std::vector<int> res;
     std::vector<int> temp;
 
@@ -45,6 +48,7 @@ int main() {
         //std::cout << m << " ";
         std::cout << monedas[m] << " ";
     }
+    std::cout << std::endl;
     std::cout << std::endl;
 
     ///
