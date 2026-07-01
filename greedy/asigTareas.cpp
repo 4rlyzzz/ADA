@@ -15,11 +15,18 @@ void greedy (std::vector<std::pair<int,int>>& ben_plazo) {
     std::vector<std::pair<int,int>> temp = ben_plazo;
     std::sort(temp.begin(), temp.end(), comp());
 
-    for (int i = 0, j = 0; j < ben_plazo.size(); j++) {
-        if(i + 1 != temp[j].second) {
+    int i = 1;
+    for (int j = 0; j < ben_plazo.size(); j++) {
+        if(i != temp[j].second) {
             continue;
         }
-        std::cout << temp[j].first << " " << temp[j].second << "\n";
+
+        for (int k = 0; k < ben_plazo.size(); k++) {
+            if(ben_plazo[k].first == temp[j].first && ben_plazo[k].second == temp[j].second) {
+                std::cout << "tarea" << k + 1 << " - " << temp[j].first << " " << temp[j].second << "\n";
+            }
+        }
+
         i++;
     }
 }

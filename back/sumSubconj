@@ -1,0 +1,58 @@
+#include <iostream>
+#include <vector>
+
+// 1. Enfoque Permutacional (Usando for)
+// Aquí el 'for' empieza en idx para evitar reordenar los mismos elementos (ej: 2,8 es lo mismo que 8,2)
+void permutacional(int idx, std::vector<int>& S, int target, std::vector<int>& res, std::vector<int>& temp, int sumCurrent) {
+    if (sumCurrent > target) return;
+    if (sumCurrent == target) {
+        if (res.empty() || (int)temp.size() < (int)res.size()) {
+            res = temp;
+        }
+        return;
+    }
+
+    for (int i = idx; i < S.size(); i++) {
+        temp.push_back(i); // Guardamos el índice
+        permutacional(i + 1, S, target, res, temp, sumCurrent + S[i]);
+        temp.pop_back();
+    }
+}
+
+// 2. Enfoque N-ario (Decisión binaria de incluir o excluir)
+void n_arios(int idx, std::vector<int>& S, int target, std::vector<int>& res, std::vector<int>& temp, int sumCurrent) {
+    if (sumCurrent > target || idx >= S.size()) return;
+    if (sumCurrent == target) {
+        if (res.empty() || (int)temp.size() < (int)res.size()) {
+            res = temp;
+        }
+        return;
+    }
+
+    // Incluir S[idx]
+    temp.push_back(idx);
+    n_arios(idx + 1, S, target, res, temp, sumCurrent + S[idx]);
+    temp.pop_back();
+
+    // No incluir S[idx]
+    n_arios(idx + 1, S, target, res, temp, sumCurrent);
+}
+
+int main() {
+    std::vector<int> S = { 2, 4, 6, 8 };
+    int target = 10;
+    std::vector<int> res, temp;
+
+    // --- Ejecución Permutacional ---
+    permutacional(0, S, target, res, temp, 0);
+    std::cout << "Permutacional (indices): ";
+    for (int m : res) std::cout << S[m] << " ";
+    
+    // --- Ejecución N-ario ---
+    res.clear(); temp.clear();
+    n_arios(0, S, target, res, temp, 0);
+    std::cout << "\nN-ario (indices): ";
+    for (int m : res) std::cout << S[m] << " ";
+    
+    return 0;
+}
